@@ -13,16 +13,16 @@ function CadastroProdutos() {
 
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-    const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState("");
     const [imageUrl, setImageUrl] = useState("");
 
-    const handleSubmit= async(event) {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         const newProduct = {
             nome: name,
             descricao: description,
-            preco: parseFloatprice,
+            preco: parseFloat(price),
             imagem: imageUrl
         };
 
