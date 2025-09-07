@@ -7,8 +7,9 @@ import CadastroProdutos from "./pages/Produtos/CadastroProdutos";
 function App() {
   return (
     <Routes>
-      <Route path="/" Component={EnvioForm} />
-      <Route path="/envios" Component={EnvioList} />
+      <Route path="/" Component={EnvioList} />
+      <Route path="/envios/novo" Component={EnvioForm} />
+      <Route path="/envios/editar/:id" Component={EnvioForm} />
       <Route path="/produtos/cadastro" Component={CadastroProdutos} />
     </Routes>
   );
