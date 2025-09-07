@@ -13,6 +13,7 @@ import {
 
 function ProdutoList() {
   const [produtos, setProdutos] = useState([]);
+  const navigate = useNavigate();
 
   // Buscar produtos da API com useEffect
   useEffect(() => {
@@ -80,7 +81,7 @@ function ProdutoList() {
                 <Button size="small" variant="outlined" color="error" onClick={() => deletarProduto(produto.id)}>
                   Deletar
                 </Button>
-                <Button size="small" variant="contained" color="primary">
+                <Button size="small" variant="contained" color="primary" onClick={() => navigate(`/produtos/editar/${produto.id}`)}>
                   Editar
                 </Button>
               </CardActions>
