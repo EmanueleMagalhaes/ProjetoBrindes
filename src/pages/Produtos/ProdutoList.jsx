@@ -16,6 +16,10 @@ function ProdutoList() {
 
   // Buscar produtos da API com useEffect
   useEffect(() => {
+    buscarProdutos();
+  }, []);
+
+  function buscarProdutos() {
     axios
       .get("http://localhost:3001/produtos") // ajuste a URL da sua API
       .then((response) => {
@@ -24,7 +28,24 @@ function ProdutoList() {
       .catch((error) => {
         console.error("Erro ao buscar produtos:", error);
       });
-  }, []);
+  }
+
+  //Função para deletar produto
+    function deletarProduto(id) {
+        const confirmacao = window.confirm("Tem certeza que deseja deletar este produto?");
+         if (confirmacao) {
+      axios
+        .delete(`http://localhost:3001/produtos/${id}`)
+        .then(() => {
+          alert("Produto deletado com sucesso!");
+          buscarProdutos(); // recarrega a lista
+        })
+        .catch((error) => {
+          console.error("Erro ao deletar produto:", error);
+          alert("Erro ao deletar produto.");
+        });
+        }
+    }
 
   return (
     <Container sx={{ marginTop: 4 }}>
@@ -56,7 +77,7 @@ function ProdutoList() {
 
               {/* Botões */}
               <CardActions>
-                <Button size="small" variant="outlined" color="error">
+                <Button size="small" variant="outlined" color="error" onClick={() => deletarProduto(produto.id)}>
                   Deletar
                 </Button>
                 <Button size="small" variant="contained" color="primary">
