@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import {
   Grid,
   Card,
@@ -13,7 +14,7 @@ import {
 
 function ProdutoList() {
   const [produtos, setProdutos] = useState([]);
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
   // Buscar produtos da API com useEffect
   useEffect(() => {
